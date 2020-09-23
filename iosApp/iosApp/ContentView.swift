@@ -33,7 +33,7 @@ extension ContentView {
 
     enum LoadableLaunches {
         case loading
-        case result([RocketLaunch])
+        case result([RocketLaunchDto])
         case error(String)
     }
 
@@ -48,7 +48,7 @@ extension ContentView {
 
         func loadLaunches(forceReload: Bool) {
             self.launches = .loading
-            sdk.getLaunches(forceReload: forceReload, completionHandler: { launches, error in
+            sdk.getLaunches(completionHandler: { launches, error in
                 if let launches = launches {
                     self.launches = .result(launches)
                 } else {
@@ -59,4 +59,4 @@ extension ContentView {
     }
 }
 
-extension RocketLaunch: Identifiable { }
+extension RocketLaunchDto: Identifiable { }

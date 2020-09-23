@@ -10,7 +10,7 @@ import SwiftUI
 import shared
 
 struct RocketLaunchRow: View {
-    var rocketLaunch: RocketLaunch
+    var rocketLaunch: RocketLaunchDto
 
     var body: some View {
         HStack() {
