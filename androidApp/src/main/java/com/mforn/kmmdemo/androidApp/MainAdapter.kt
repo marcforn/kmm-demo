@@ -6,9 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.mforn.kmmdemo.shared.data.network.model.RocketLaunchDto
+import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
 
-class MainAdapter(var launchDtos: List<RocketLaunchDto>) : RecyclerView.Adapter<MainAdapter.LaunchViewHolder>() {
+class MainAdapter(var dataset: List<RocketLaunch>) : RecyclerView.Adapter<MainAdapter.LaunchViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
         return LayoutInflater.from(parent.context)
@@ -16,10 +16,10 @@ class MainAdapter(var launchDtos: List<RocketLaunchDto>) : RecyclerView.Adapter<
             .run(::LaunchViewHolder)
     }
 
-    override fun getItemCount(): Int = launchDtos.count()
+    override fun getItemCount(): Int = dataset.count()
 
     override fun onBindViewHolder(holder: LaunchViewHolder, position: Int) {
-        holder.bindData(launchDtos[position])
+        holder.bindData(dataset[position])
     }
 
     inner class LaunchViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,12 +28,12 @@ class MainAdapter(var launchDtos: List<RocketLaunchDto>) : RecyclerView.Adapter<
         private val launchSuccessTextView = itemView.findViewById<TextView>(R.id.launchSuccess)
         private val missionDetailsTextView = itemView.findViewById<TextView>(R.id.details)
 
-        fun bindData(launchDto: RocketLaunchDto) {
+        fun bindData(launch: RocketLaunch) {
             val ctx = itemView.context
-            missionNameTextView.text = ctx.getString(R.string.mission_name_field, launchDto.missionName)
-            launchYearTextView.text = ctx.getString(R.string.launch_year_field, launchDto.launchYear.toString())
-            missionDetailsTextView.text = ctx.getString(R.string.details_field, launchDto.details ?: "")
-            val launchSuccess = launchDto.launchSuccess
+            missionNameTextView.text = ctx.getString(R.string.mission_name_field, launch.missionName)
+            launchYearTextView.text = ctx.getString(R.string.launch_year_field, launch.launchYear.toString())
+            missionDetailsTextView.text = ctx.getString(R.string.details_field, launch.details ?: "")
+            val launchSuccess = launch.launchSuccess
             if (launchSuccess != null ) {
                 if (launchSuccess) {
                     launchSuccessTextView.text = ctx.getString(R.string.successful)

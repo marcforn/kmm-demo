@@ -10,7 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import androidx.core.view.isVisible
-import com.mforn.kmmdemo.shared.SpaceXSDK
+import com.mforn.kmmdemo.shared.domain.interactor.RocketInteractorImpl
 import kotlinx.coroutines.cancel
 
 
@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var progressBarView: FrameLayout
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-    private val sdk = SpaceXSDK()
+    private val sdk = RocketInteractorImpl()
 
     private val launchesRvAdapter = MainAdapter(listOf())
 
@@ -56,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             kotlin.runCatching {
                 sdk.getLaunches()
             }.onSuccess {
-                launchesRvAdapter.launchDtos = it
+                launchesRvAdapter.dataset = it
                 launchesRvAdapter.notifyDataSetChanged()
             }.onFailure {
                 Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_SHORT).show()
