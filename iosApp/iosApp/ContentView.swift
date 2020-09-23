@@ -10,7 +10,7 @@ struct ContentView: View {
             .navigationBarTitle("SpaceX Launches")
             .navigationBarItems(trailing:
                 Button("Reload") {
-                    self.viewModel.loadLaunches(forceReload: true)
+                    self.viewModel.loadLaunches()
             })
         }
     }
@@ -33,7 +33,7 @@ extension ContentView {
 
     enum LoadableLaunches {
         case loading
-        case result([RocketLaunchDto])
+        case result([RocketLaunch])
         case error(String)
     }
 
@@ -43,10 +43,10 @@ extension ContentView {
 
         init(sdk: RocketInteractorImpl) {
             self.sdk = sdk
-            self.loadLaunches(forceReload: false)
+            self.loadLaunches()
         }
 
-        func loadLaunches(forceReload: Bool) {
+        func loadLaunches() {
             self.launches = .loading
             sdk.getLaunches(completionHandler: { launches, error in
                 if let launches = launches {
@@ -59,4 +59,4 @@ extension ContentView {
     }
 }
 
-extension RocketLaunchDto: Identifiable { }
+extension RocketLaunch: Identifiable { }

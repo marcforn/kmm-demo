@@ -10,7 +10,7 @@ import SwiftUI
 import shared
 
 struct RocketLaunchRow: View {
-    var rocketLaunch: RocketLaunchDto
+    var rocketLaunch: RocketLaunch
 
     var body: some View {
         HStack() {
@@ -18,7 +18,7 @@ struct RocketLaunchRow: View {
                 Text("Launch name: \(rocketLaunch.missionName)")
                 Text(launchText).foregroundColor(launchColor)
                 Text("Launch year: \(String(rocketLaunch.launchYear))")
-                Text("Launch details: \(rocketLaunch.details ?? "")")
+                Text("Launch details: \(rocketLaunch.details)")
             }
             Spacer()
         }
@@ -27,18 +27,11 @@ struct RocketLaunchRow: View {
 
 extension RocketLaunchRow {
    private var launchText: String {
-       if let isSuccess = rocketLaunch.launchSuccess {
-           return isSuccess.boolValue ? "Successful" : "Unsuccessful"
-       } else {
-           return "No data"
-       }
+    return rocketLaunch.launchSuccess ? "Successful" : "Unsuccessful"
+    
    }
 
    private var launchColor: Color {
-       if let isSuccess = rocketLaunch.launchSuccess {
-           return isSuccess.boolValue ? Color.green : Color.red
-       } else {
-           return Color.gray
-       }
+    return rocketLaunch.launchSuccess ? Color.green : Color.red
    }
 }
