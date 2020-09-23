@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared.data.model.mapper
+package com.mforn.common.data.mapper
 
 
 interface DataMapper<in I, out O> {

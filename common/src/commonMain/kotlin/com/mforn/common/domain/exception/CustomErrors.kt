@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared.domain.exception
+package com.mforn.common.domain.exception
 
 private const val API_ERROR = 1001
 private const val NETWORK_ERROR = 1002

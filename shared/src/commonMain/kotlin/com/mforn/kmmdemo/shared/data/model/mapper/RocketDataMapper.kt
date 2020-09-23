@@ -1,5 +1,6 @@
 package com.mforn.kmmdemo.shared.data.model.mapper
 
+import com.mforn.common.data.mapper.DataMapper
 import com.mforn.kmmdemo.shared.data.network.model.RocketLaunchDto
 import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
 
