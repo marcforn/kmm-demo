@@ -16,9 +16,9 @@ data class RocketLaunchDto(
     @SerialName("rocket")
     val rocket: RocketDto,
     @SerialName("details")
-    val details: String,
+    val details: String?,
     @SerialName("launch_success")
-    val launchSuccess: Boolean,
+    val launchSuccess: Boolean?,
     @SerialName("links")
     val links: LinksDto
 )

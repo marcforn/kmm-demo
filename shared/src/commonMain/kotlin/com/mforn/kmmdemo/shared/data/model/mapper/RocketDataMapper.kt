@@ -17,8 +17,8 @@ class RocketDataMapper : DataMapper<List<RocketLaunchDto>, List<RocketLaunch>> {
             rocketLaunchDto.flightNumber,
             rocketLaunchDto.missionName,
             rocketLaunchDto.launchYear,
-            rocketLaunchDto.details,
-            rocketLaunchDto.launchSuccess
+            rocketLaunchDto.details ?: "",
+            rocketLaunchDto.launchSuccess ?: false
         )
     }
 }
