@@ -7,7 +7,7 @@ import kotlinx.serialization.json.Json
 
 
 // TODO mforn: 23/09/20 inject with DI
-object CommonModule {
+class CommonModule {
 
     val httpClient = HttpClient {
         install(JsonFeature) {
