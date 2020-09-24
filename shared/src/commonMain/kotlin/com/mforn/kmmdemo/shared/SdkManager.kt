@@ -4,5 +4,5 @@ import com.mforn.kmmdemo.shared.domain.interactor.RocketInteractorImpl
 
 object SdkManager {
 
-    private val launches = RocketInteractorImpl()
+    val launches = RocketInteractorImpl()
 }
