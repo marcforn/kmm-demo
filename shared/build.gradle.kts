@@ -7,6 +7,9 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+group = "com.jetbrains.handson"
+version = "1.0-SNAPSHOT"
+
 repositories {
     gradlePluginPortal()
     google()
@@ -24,10 +27,19 @@ kotlin {
         }
     }
 
+    val ktorVersion = "1.4.0"
+    val serializationVersion = "1.0.0-RC"
+    val coroutinesVersion = "1.3.9-native-mt"
+
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(project(":common"))
+
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+                implementation("io.ktor:ktor-client-core:$ktorVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
+                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
             }
         }
         val commonTest by getting {
@@ -38,6 +50,7 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
+                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
         val androidTest by getting {
@@ -48,6 +61,7 @@ kotlin {
         }
         val iosMain by getting {
             dependencies {
+                implementation("io.ktor:ktor-client-ios:$ktorVersion")
             }
         }
         val iosTest by getting
