@@ -39,12 +39,12 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
+                api("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
         val iosMain by getting{
             dependencies{
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
+                api("io.ktor:ktor-client-ios:$ktorVersion")
             }
         }
     }
