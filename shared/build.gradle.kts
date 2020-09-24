@@ -7,9 +7,6 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-group = "com.jetbrains.handson"
-version = "1.0-SNAPSHOT"
-
 repositories {
     gradlePluginPortal()
     google()
