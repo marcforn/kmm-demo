@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
-
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -7,15 +5,13 @@ plugins {
     id("kotlin-android-extensions")
 }
 
-group = "com.jetbrains.handson"
-version = "1.0-SNAPSHOT"
-
 repositories {
     gradlePluginPortal()
     google()
     jcenter()
     mavenCentral()
 }
+
 kotlin {
     android()
     ios {
@@ -26,19 +22,10 @@ kotlin {
         }
     }
 
-    val ktorVersion = "1.4.0"
-    val serializationVersion = "1.0.0-RC"
-    val coroutinesVersion = "1.3.9-native-mt"
-
     sourceSets {
         val commonMain by getting {
             dependencies {
                 implementation(project(":common"))
-
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                implementation("io.ktor:ktor-client-core:$ktorVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
-                implementation("io.ktor:ktor-client-serialization:$ktorVersion")
             }
         }
         val commonTest by getting {
@@ -49,7 +36,6 @@ kotlin {
         }
         val androidMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-android:$ktorVersion")
             }
         }
         val androidTest by getting {
@@ -60,10 +46,12 @@ kotlin {
         }
         val iosMain by getting {
             dependencies {
-                implementation("io.ktor:ktor-client-ios:$ktorVersion")
             }
         }
-        val iosTest by getting
+        val iosTest by getting{
+            dependencies{
+            }
+        }
     }
 }
 android {
@@ -87,7 +75,7 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework = kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")
