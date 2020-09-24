@@ -3,6 +3,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("kotlin-android-extensions")
+    id("maven-publish")
 }
 
 repositories {

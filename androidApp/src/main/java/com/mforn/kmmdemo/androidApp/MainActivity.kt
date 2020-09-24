@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import androidx.core.view.isVisible
+import com.mforn.kmmdemo.shared.SdkManager
 import com.mforn.kmmdemo.shared.domain.interactor.RocketInteractorImpl
 import kotlinx.coroutines.cancel
 
@@ -20,8 +21,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var launchesRecyclerView: RecyclerView
     private lateinit var progressBarView: FrameLayout
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
-
-    private val sdk = RocketInteractorImpl()
 
     private val launchesRvAdapter = MainAdapter(listOf())
 
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         progressBarView.isVisible = true
         mainScope.launch {
             kotlin.runCatching {
-                sdk.getLaunches()
+                SdkManager().launches.getLaunches()
             }.onSuccess {
                 launchesRvAdapter.dataset = it
                 launchesRvAdapter.notifyDataSetChanged()

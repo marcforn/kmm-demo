@@ -3,6 +3,7 @@ package com.mforn.common.configuration
 import io.ktor.client.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.*
+import io.ktor.client.features.logging.*
 import kotlinx.serialization.json.Json
 
 
@@ -13,6 +14,11 @@ class CommonModule {
         install(JsonFeature) {
             val json = Json { ignoreUnknownKeys = true }
             serializer = KotlinxSerializer(json)
+        }
+
+        install(Logging) {
+            logger = Logger.DEFAULT
+            level = LogLevel.ALL
         }
     }
 
