@@ -23,6 +23,7 @@ kotlin {
     }
 
     val ktorVersion = "1.4.0"
+    val ktorVersionLogging = "1.3.1"
     val serializationVersion = "1.0.0-RC"
     val coroutinesVersion = "1.3.9-native-mt"
 
@@ -33,16 +34,19 @@ kotlin {
                 api("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
                 api("io.ktor:ktor-client-core:$ktorVersion")
                 api("io.ktor:ktor-client-serialization:$ktorVersion")
+                api("io.ktor:ktor-client-logging:$ktorVersion")
             }
         }
         val androidMain by getting {
             dependencies {
                 api("io.ktor:ktor-client-android:$ktorVersion")
+                api("io.ktor:ktor-client-logging-jvm:$ktorVersion")
             }
         }
         val iosMain by getting{
             dependencies{
                 api("io.ktor:ktor-client-ios:$ktorVersion")
+                api("io.ktor:ktor-client-logging-native:$ktorVersionLogging")
             }
         }
     }
