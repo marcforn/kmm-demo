@@ -23,13 +23,12 @@ kotlin {
     }
 
     val ktorVersion = "1.4.0"
-    val ktorVersionLogging = "1.3.1"
     val serializationVersion = "1.0.0-RC"
-    val coroutinesVersion = "1.3.9-native-mt"
+    val coroutinesVersion = "1.3.9-native-mt-2"
 
     sourceSets {
-        val commonMain by getting{
-            dependencies{
+        val commonMain by getting {
+            dependencies {
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
                 api("io.ktor:ktor-client-core:$ktorVersion")
@@ -40,13 +39,11 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 api("io.ktor:ktor-client-android:$ktorVersion")
-                api("io.ktor:ktor-client-logging-jvm:$ktorVersion")
             }
         }
-        val iosMain by getting{
-            dependencies{
+        val iosMain by getting {
+            dependencies {
                 api("io.ktor:ktor-client-ios:$ktorVersion")
-                api("io.ktor:ktor-client-logging-native:$ktorVersionLogging")
             }
         }
     }
@@ -73,7 +70,10 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
-    val framework = kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>(targetName).binaries.getFramework(mode)
+    val framework =
+        kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>(
+            targetName
+        ).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)
     val targetDir = File(buildDir, "xcode-frameworks")

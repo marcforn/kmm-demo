@@ -17,7 +17,7 @@ class CommonModule {
         }
 
         install(Logging) {
-            logger = Logger.DEFAULT
+            logger = Logger.SIMPLE
             level = LogLevel.ALL
         }
     }
