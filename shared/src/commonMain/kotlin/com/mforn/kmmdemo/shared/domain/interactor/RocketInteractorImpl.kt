@@ -1,18 +1,13 @@
 package com.mforn.kmmdemo.shared.domain.interactor
 
-import com.mforn.common.configuration.CommonModule
-import com.mforn.kmmdemo.shared.data.model.mapper.RocketDataMapper
-import com.mforn.kmmdemo.shared.data.network.RocketApi
-import com.mforn.kmmdemo.shared.data.repository.RocketRepositoryImpl
+import com.mforn.kmmdemo.shared.configuration.LaunchesModule
 import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
 import com.mforn.kmmdemo.shared.domain.repository.RocketRepository
 
 
 class RocketInteractorImpl : RocketInteractor {
 
-    private val rocketApi = RocketApi(CommonModule().httpClient)
-    private val dataMapper = RocketDataMapper()
-    private val rocketRepository: RocketRepository = RocketRepositoryImpl(rocketApi, dataMapper)
+    private val rocketRepository: RocketRepository = LaunchesModule().rocketRepository
 
 
     @Throws(Exception::class)
