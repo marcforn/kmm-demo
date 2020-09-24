@@ -1,6 +1,6 @@
-package com.mforn.kmmdemo.shared.domain.interactor
+package com.mforn.shared.domain.interactor
 
-import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
+import com.mforn.shared.domain.model.RocketLaunch
 
 interface RocketInteractor {
 

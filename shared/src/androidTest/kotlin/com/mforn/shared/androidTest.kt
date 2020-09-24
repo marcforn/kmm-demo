@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared
+package com.mforn.shared
 
 import org.junit.Assert.assertTrue
 import org.junit.Test

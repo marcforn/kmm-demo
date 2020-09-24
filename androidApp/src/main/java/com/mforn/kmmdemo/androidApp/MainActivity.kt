@@ -10,8 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 import androidx.core.view.isVisible
-import com.mforn.kmmdemo.shared.SdkManager
-import com.mforn.kmmdemo.shared.domain.interactor.RocketInteractorImpl
+import com.mforn.shared.SdkManager
 import kotlinx.coroutines.cancel
 
 

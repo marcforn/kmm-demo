@@ -1,8 +1,8 @@
-package com.mforn.kmmdemo.shared.domain.interactor
+package com.mforn.shared.domain.interactor
 
-import com.mforn.kmmdemo.shared.configuration.LaunchesModule
-import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
-import com.mforn.kmmdemo.shared.domain.repository.RocketRepository
+import com.mforn.shared.configuration.LaunchesModule
+import com.mforn.shared.domain.model.RocketLaunch
+import com.mforn.shared.domain.repository.RocketRepository
 
 
 class RocketInteractorImpl : RocketInteractor {

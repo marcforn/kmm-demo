@@ -1,8 +1,8 @@
-package com.mforn.kmmdemo.shared.data.model.mapper
+package com.mforn.shared.data.model.mapper
 
 import com.mforn.common.data.mapper.DataMapper
-import com.mforn.kmmdemo.shared.data.network.model.RocketLaunchDto
-import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
+import com.mforn.shared.data.network.model.RocketLaunchDto
+import com.mforn.shared.domain.model.RocketLaunch
 
 class RocketDataMapper : DataMapper<List<RocketLaunchDto>, List<RocketLaunch>> {
 

@@ -1,6 +1,6 @@
-package com.mforn.kmmdemo.shared.data.network
+package com.mforn.shared.data.network
 
-import com.mforn.kmmdemo.shared.data.network.model.RocketLaunchDto
+import com.mforn.shared.data.network.model.RocketLaunchDto
 import io.ktor.client.*
 import io.ktor.client.request.*
 

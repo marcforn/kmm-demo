@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared.data.network.model
+package com.mforn.shared.data.network.model
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

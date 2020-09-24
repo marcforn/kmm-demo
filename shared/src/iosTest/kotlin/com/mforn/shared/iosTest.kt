@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared
+package com.mforn.shared
 
 import kotlin.test.Test
 import kotlin.test.assertTrue

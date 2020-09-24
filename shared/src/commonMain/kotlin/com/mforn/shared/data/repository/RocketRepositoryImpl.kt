@@ -1,9 +1,9 @@
-package com.mforn.kmmdemo.shared.data.repository
+package com.mforn.shared.data.repository
 
-import com.mforn.kmmdemo.shared.data.model.mapper.RocketDataMapper
-import com.mforn.kmmdemo.shared.data.network.RocketApi
-import com.mforn.kmmdemo.shared.domain.model.RocketLaunch
-import com.mforn.kmmdemo.shared.domain.repository.RocketRepository
+import com.mforn.shared.data.model.mapper.RocketDataMapper
+import com.mforn.shared.data.network.RocketApi
+import com.mforn.shared.domain.model.RocketLaunch
+import com.mforn.shared.domain.repository.RocketRepository
 
 
 class RocketRepositoryImpl(

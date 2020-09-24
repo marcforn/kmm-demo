@@ -1,4 +1,4 @@
-package com.mforn.kmmdemo.shared.domain.model
+package com.mforn.shared.domain.model
 
 data class RocketLaunch(
     val flightNumber: Int,
