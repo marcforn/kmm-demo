@@ -1,6 +1,6 @@
-package com.mforn.shared.configuration
+package com.mforn.shared.configuration.di
 
-import com.mforn.common.configuration.CommonModule
+import com.mforn.common.configuration.di.CommonModule
 import com.mforn.shared.data.model.mapper.RocketDataMapper
 import com.mforn.shared.data.network.RocketApi
 import com.mforn.shared.data.repository.RocketRepositoryImpl
