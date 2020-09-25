@@ -4,6 +4,7 @@ import com.mforn.common.domain.exception.CustomErrorType
 import com.mforn.common.domain.exception.CustomException
 import io.ktor.client.features.*
 import io.ktor.utils.io.errors.*
+import kotlin.coroutines.cancellation.CancellationException
 
 private const val API_RETRIES = 3
 
@@ -16,11 +17,12 @@ private const val API_RETRIES = 3
  * otherwise we will throw the proper exception.
  *
  * @param block -> Block of code that will be executed
- * @throws CustomException ->
- * If a connectivity exception is captured (IOException) we do not retry and populate a CustomErrorType.NetworkError()
+ * @throws CustomException -> If a connectivity exception is captured (IOException) we do not retry and populate a CustomErrorType.NetworkError()
  * Otherwise we will retry API_RETRIES with API_RETRY_DELAY.
+ * @throws CancellationException -> Suspend block has been canceled
  */
-@Throws(Exception::class)
+@ExperimentalStdlibApi
+@Throws(CustomException::class, CancellationException::class)
 suspend fun <T> retryApi(block: suspend () -> T): T {
     repeat(API_RETRIES) {
         try {

@@ -2,6 +2,7 @@ package com.mforn.common.domain.coroutine
 
 import com.mforn.common.domain.exception.CustomErrorType
 import com.mforn.common.domain.exception.CustomException
+import kotlin.coroutines.cancellation.CancellationException
 
 
 /**
@@ -9,8 +10,10 @@ import com.mforn.common.domain.exception.CustomException
  *
  * @param block -> Block of code that will be executed
  * @throws CustomException -> If CustomException is already cached then this exception is populated, otherwise any other Exception is encapsulated into Internal error and propagated.
+ * @throws CancellationException -> Suspend block has been canceled
  */
-@Throws(Exception::class)
+@ExperimentalStdlibApi
+@Throws(CustomException::class, CancellationException::class)
 suspend fun <T> exceptionHandler(block: suspend () -> T): T {
     try {
         return block()

@@ -14,6 +14,7 @@ import com.mforn.shared.SdkManager
 import kotlinx.coroutines.cancel
 
 
+@ExperimentalStdlibApi
 class MainActivity : AppCompatActivity() {
     private val mainScope = MainScope()
 

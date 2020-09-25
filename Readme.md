@@ -1,9 +1,9 @@
 # Pending Tasks:
 
++ Throws CustomException instead of Exception
 + Dependency Injection: Koin, Kodein ?¿
 + Logging DEBUG vs RELEASE: Obfuscate relevant information
 + Libraries versions: Unify versions on a single file
-+ Throws CustomException instead of Exception
 + Unit Testing
 + Coverage Tools
 + Publish Artifact
@@ -28,8 +28,11 @@
 There no native logging mechanism. Actual/Expect implementation was required. Logs not disabled on iOS Release.
 
 
+### Custom Exception:
+The only way to populate to domain layer Custom Exception was adding @ExperimentalStdlibApi to all classes propagating the Exception.
 
-# Important links:
+
+# Reference links:
 
 + https://github.com/AAkira/Kotlin-Multiplatform-Libraries
 + https://libs.kmp.icerock.dev/
