@@ -38,17 +38,17 @@ extension ContentView {
     }
 
     class ViewModel: ObservableObject {
-        let sdk: RocketInteractorImpl
+        let sdk: SdkManager
         @Published var launches = LoadableLaunches.loading
 
-        init(sdk: RocketInteractorImpl) {
+        init(sdk: SdkManager) {
             self.sdk = sdk
             self.loadLaunches()
         }
 
         func loadLaunches() {
             self.launches = .loading
-            sdk.getLaunches(completionHandler: { launches, error in
+            sdk.launches.getLaunches(completionHandler: { launches, error in
                 if let launches = launches {
                     self.launches = .result(launches)
                 } else {
