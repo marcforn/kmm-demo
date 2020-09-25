@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                 launchesRvAdapter.dataset = it
                 launchesRvAdapter.notifyDataSetChanged()
             }.onFailure {
-                Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_SHORT).show()
+                Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
             }
             progressBarView.isVisible = false
         }

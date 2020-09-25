@@ -14,7 +14,6 @@ class RocketRepositoryImpl(
 
     override suspend fun getAllLaunches(): List<RocketLaunch>{
         val response = rocketApi.getAllLaunches()
-
         return dataMapper.mapToDomain(response)
     }
 

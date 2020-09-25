@@ -8,9 +8,9 @@ private const val INTERNAL_ERROR = 1003
 
 sealed class CustomErrorType {
 
-    class ApiError(httpCode: Int, sdkMessage: String?) : CustomException("HttpStatus:$httpCode - Message:$sdkMessage", API_ERROR)
+    class ApiError(httpCode: Int, sdkMessage: String?) : CustomException("Api Error: HttpStatus: $httpCode - Message:$sdkMessage", API_ERROR)
 
-    class NetworkError(sdkMessage: String = "") : CustomException("Network error $sdkMessage", NETWORK_ERROR)
+    class NetworkError(sdkMessage: String = "") : CustomException("Network error: $sdkMessage", NETWORK_ERROR)
 
     class InternalError(sdkMessage: String = "") : CustomException("Internal error: $sdkMessage", INTERNAL_ERROR)
 
