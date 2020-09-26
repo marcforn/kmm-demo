@@ -18,6 +18,6 @@ class LaunchesInteractorImpl : LaunchesInteractor, KoinComponent {
     @Throws(CustomException::class, CancellationException::class)
     override suspend fun getLaunches(): List<RocketLaunch> {
         return exceptionHandler { launchesRepository.getAllLaunches() }
-    }
+    }fsdfsfsd
 
 }
