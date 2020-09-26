@@ -1,4 +1,9 @@
+include(":launches")
 include(":common")
+include(":shared")
+include(":androidApp")
+
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -17,6 +22,5 @@ pluginManagement {
 rootProject.name = "KMMDemo"
 
 
-include(":androidApp")
-include(":shared")
+
 

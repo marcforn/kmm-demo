@@ -1,10 +1,10 @@
-package com.mforn.shared.domain.repository
+package com.mforn.launches.domain.repository
 
-import com.mforn.common.domain.exception.CustomException
-import com.mforn.shared.domain.model.RocketLaunch
+import com.mforn.common.domain.model.exception.CustomException
+import com.mforn.launches.domain.model.RocketLaunch
 import kotlin.coroutines.cancellation.CancellationException
 
-interface RocketRepository {
+interface LaunchesRepository {
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)

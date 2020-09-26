@@ -1,4 +1,4 @@
-package com.mforn.common.data.mapper
+package com.mforn.common.data.model.mapper
 
 
 interface DataMapper<in I, out O> {

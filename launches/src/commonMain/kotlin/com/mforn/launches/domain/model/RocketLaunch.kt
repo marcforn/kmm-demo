@@ -1,4 +1,4 @@
-package com.mforn.shared.domain.model
+package com.mforn.launches.domain.model
 
 data class RocketLaunch(
     val flightNumber: Int,

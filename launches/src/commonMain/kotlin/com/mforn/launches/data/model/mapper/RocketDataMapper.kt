@@ -1,8 +1,8 @@
-package com.mforn.shared.data.model.mapper
+package com.mforn.launches.data.model.mapper
 
-import com.mforn.common.data.mapper.DataMapper
-import com.mforn.shared.data.network.model.RocketLaunchDto
-import com.mforn.shared.domain.model.RocketLaunch
+import com.mforn.common.data.model.mapper.DataMapper
+import com.mforn.launches.data.api.model.response.RocketLaunchDto
+import com.mforn.launches.domain.model.RocketLaunch
 
 class RocketDataMapper : DataMapper<List<RocketLaunchDto>, List<RocketLaunch>> {
 

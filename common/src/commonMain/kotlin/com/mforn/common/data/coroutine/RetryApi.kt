@@ -1,7 +1,7 @@
 package com.mforn.common.data.coroutine
 
-import com.mforn.common.domain.exception.CustomErrorType
-import com.mforn.common.domain.exception.CustomException
+import com.mforn.common.domain.model.exception.CustomErrorType
+import com.mforn.common.domain.model.exception.CustomException
 import io.ktor.client.features.*
 import io.ktor.utils.io.errors.*
 import kotlin.coroutines.cancellation.CancellationException

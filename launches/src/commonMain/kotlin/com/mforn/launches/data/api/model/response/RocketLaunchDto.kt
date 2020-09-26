@@ -1,4 +1,4 @@
-package com.mforn.shared.data.network.model
+package com.mforn.launches.data.api.model.response
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

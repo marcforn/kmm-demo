@@ -27,34 +27,17 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation(project(":common"))
+                api(project(":launches"))
             }
         }
-        val commonTest by getting {
-            dependencies {
-                implementation(kotlin("test-common"))
-                implementation(kotlin("test-annotations-common"))
-            }
-        }
-        val androidMain by getting {
-            dependencies {
-            }
-        }
-        val androidTest by getting {
-            dependencies {
-                implementation(kotlin("test-junit"))
-                implementation("junit:junit:4.12")
-            }
-        }
-        val iosMain by getting {
-            dependencies {
-            }
-        }
-        val iosTest by getting{
-            dependencies{
-            }
-        }
+        val commonTest by getting
+        val androidMain by getting
+        val androidTest by getting
+        val iosMain by getting
+        val iosTest by getting
     }
 }
+
 android {
     compileSdkVersion(29)
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")

@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private val launchesRvAdapter = MainAdapter(listOf())
 
+    private val sdk = SdkManager()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         title = "SpaceX Launches"
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
         progressBarView.isVisible = true
         mainScope.launch {
             kotlin.runCatching {
-                SdkManager().launches.getLaunches()
+                sdk.launches.getLaunches()
             }.onSuccess {
                 launchesRvAdapter.dataset = it
                 launchesRvAdapter.notifyDataSetChanged()

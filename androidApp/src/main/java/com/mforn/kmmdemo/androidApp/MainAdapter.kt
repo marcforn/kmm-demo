@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.mforn.shared.domain.model.RocketLaunch
+import com.mforn.launches.domain.model.RocketLaunch
 
 class MainAdapter(var dataset: List<RocketLaunch>) : RecyclerView.Adapter<MainAdapter.LaunchViewHolder>() {
 
