@@ -1,25 +1,31 @@
 package com.mforn.common.configuration.di
 
+import com.mforn.common.configuration.log.CustomLogger
 import io.ktor.client.*
 import io.ktor.client.features.json.JsonFeature
 import io.ktor.client.features.json.serializer.*
 import io.ktor.client.features.logging.*
-import io.ktor.client.features.logging.Logger
 import kotlinx.serialization.json.Json
+import org.koin.dsl.module
 
 
-// TODO mforn: 23/09/20 inject with DI
-class CommonModule {
+val commonModule = module {
+    single<HttpClient> {
+        HttpClient {
+            install(JsonFeature) {
+                val json = Json { ignoreUnknownKeys = true }
+                serializer = KotlinxSerializer(json)
+            }
 
-    val httpClient = HttpClient {
-        install(JsonFeature) {
-            val json = Json { ignoreUnknownKeys = true }
-            serializer = KotlinxSerializer(json)
-        }
+            install(Logging) {
+                logger = object : Logger {
+                    override fun log(message: String) {
+                        CustomLogger.i("HttpClient", message)
+                    }
 
-        install(Logging) {
-            logger = Logger.SIMPLE
-            level = LogLevel.ALL // TODO mforn: 25/09/20 check debug vs release
+                }
+                level = LogLevel.ALL // TODO mforn: 25/09/20 check debug vs release
+            }
         }
     }
 

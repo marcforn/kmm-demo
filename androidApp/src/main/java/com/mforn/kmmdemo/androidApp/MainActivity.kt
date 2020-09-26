@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         displayLaunches(false)
+
+        sdk.initialize()
     }
 
     override fun onDestroy() {
@@ -55,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         progressBarView.isVisible = true
         mainScope.launch {
             kotlin.runCatching {
-                sdk.launches.getLaunches()
+                sdk.provideLaunches().getLaunches()
             }.onSuccess {
                 launchesRvAdapter.dataset = it
                 launchesRvAdapter.notifyDataSetChanged()

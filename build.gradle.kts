@@ -19,6 +19,9 @@ buildscript {
 group = "com.mforn.kmmdemo"
 version = "1.0-SNAPSHOT"
 
-repositories {
-    mavenCentral()
+allprojects {
+    repositories {
+        mavenCentral()
+        maven(url = "https://dl.bintray.com/ekito/koin")
+    }
 }

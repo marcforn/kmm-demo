@@ -11,7 +11,7 @@ expect class PlatformLogger() {
     fun logError(tag: String, message: String, exception: Throwable)
 }
 
-object Logger {
+object CustomLogger {
     private val platformLogger = PlatformLogger()
 
     var enabled
