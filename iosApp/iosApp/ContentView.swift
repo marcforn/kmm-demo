@@ -48,7 +48,7 @@ extension ContentView {
 
         func loadLaunches() {
             self.launches = .loading
-            sdk.initialize()
+            sdk.initialize(applicationContext: UIView())
             sdk.provideLaunches().getLaunches(completionHandler: { launches, error in
                 if let launches = launches {
                     self.launches = .result(launches)

@@ -20,4 +20,10 @@ class LaunchesInteractorImpl : LaunchesInteractor, KoinComponent {
         return exceptionHandler { launchesRepository.getAllLaunches() }
     }
 
+    @ExperimentalStdlibApi
+    @Throws(CustomException::class, CancellationException::class)
+    override suspend fun getLaunchInformation(flightNumber : Int): RocketLaunch {
+        return launchesRepository.getLaunchInformation(flightNumber)
+    }
+
 }

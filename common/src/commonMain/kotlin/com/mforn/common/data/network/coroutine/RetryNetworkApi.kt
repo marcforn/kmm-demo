@@ -1,4 +1,4 @@
-package com.mforn.common.data.coroutine
+package com.mforn.common.data.network.coroutine
 
 import com.mforn.common.domain.model.exception.CustomErrorType
 import com.mforn.common.domain.model.exception.CustomException

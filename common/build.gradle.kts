@@ -33,11 +33,11 @@ kotlin {
                 api(Dependencies.Ktor.commonCore)
                 api(Dependencies.Ktor.commonSerialization)
                 api(Dependencies.Ktor.commonLogging)
+                //api(Dependencies.BlueFalcon.common) // TODO mforn: 28/09/20 pending fix from BlueFalcon team
             }
         }
         val commonTest by getting {
             dependencies {
-                api(Dependencies.Coroutines.test)
                 api(Dependencies.Koin.test)
             }
         }

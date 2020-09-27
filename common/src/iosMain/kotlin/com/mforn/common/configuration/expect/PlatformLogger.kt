@@ -1,35 +1,33 @@
-package com.mforn.common.configuration.log
-
-import android.util.Log
-import com.mforn.common.android.BuildConfig
+package com.mforn.common.configuration.expect
 
 actual class PlatformLogger {
 
-    actual var enabled: Boolean = BuildConfig.DEBUG
+    actual var enabled = true // TODO mforn: 25/09/20 check ios DEBUG status
 
 
     actual fun logInfo(tag: String, message: String) {
-        Log.i(tag, message)
+        println("$tag : $message")
     }
 
     actual fun logDebug(tag: String, message: String) {
-        Log.d(tag, message)
+        print("D-$tag : $message")
     }
 
     actual fun logWarning(tag: String, message: String) {
-        Log.e(tag, message)
+        println("W-$tag : $message")
     }
 
     actual fun logWarning(tag: String, message: String, exception: Throwable) {
-        Log.e(tag, message, exception)
+        println("W-$tag : $message")
+        println(exception)
     }
 
     actual fun logError(tag: String, message: String) {
-        Log.e(tag, message)
+        println("E-$tag : $message")
     }
 
     actual fun logError(tag: String, message: String, exception: Throwable) {
-        Log.e(tag, message, exception)
+        println("E-$tag : $message")
+        println(exception)
     }
-
 }

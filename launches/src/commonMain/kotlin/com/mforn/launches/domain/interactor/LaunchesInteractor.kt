@@ -10,4 +10,8 @@ interface LaunchesInteractor {
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getLaunches(): List<RocketLaunch>
 
+    @ExperimentalStdlibApi
+    @Throws(CustomException::class, CancellationException::class)
+    suspend fun getLaunchInformation(flightNumber : Int): RocketLaunch
+
 }

@@ -1,12 +1,14 @@
 package com.mforn.shared
 
 import com.mforn.common.configuration.di.commonModule
+import com.mforn.common.configuration.expect.ApplicationContext
 import com.mforn.common.configuration.log.CustomLogger
 import com.mforn.common.domain.model.exception.CustomErrorType
 import com.mforn.launches.configuration.di.launchesModule
 import com.mforn.launches.domain.interactor.LaunchesInteractor
 import com.mforn.launches.domain.interactor.LaunchesInteractorImpl
 import org.koin.core.context.startKoin
+import org.koin.dsl.module
 
 
 private val TAG = SdkManager::class.simpleName!!
@@ -22,23 +24,26 @@ private val TAG = SdkManager::class.simpleName!!
  */
 class SdkManager {
 
-    private var initialized = false
-
+    private lateinit var appContext: ApplicationContext
 
     /**
      * Initialize the SDK:
      *  1 - Creating Dependency Injection graph
      *  2 - Set initialized flag as true
      */
-    fun initialize() {
+    fun initialize(applicationContext: ApplicationContext) {
+        appContext = applicationContext
         initKoin()
-        initialized = true
         CustomLogger.i(TAG, "Initialized")
     }
 
     private fun initKoin() {
+        val appModule = module {
+            single<ApplicationContext> { appContext }
+        }
         startKoin {
             modules(
+                appModule,
                 commonModule,
                 launchesModule
             )
@@ -48,11 +53,10 @@ class SdkManager {
     /**
      * Provide Launches Service
      */
-    fun provideLaunches() : LaunchesInteractor{
-        if (!initialized){
+    fun provideLaunches(): LaunchesInteractor {
+        if (!::appContext.isInitialized) {
             throw CustomErrorType.NotInitializedError()
         }
-
         return LaunchesInteractorImpl()
     }
 

@@ -1,6 +1,6 @@
 package com.mforn.launches.configuration.di
 
-import com.mforn.launches.data.api.LaunchesApi
+import com.mforn.launches.data.network.LaunchesApi
 import com.mforn.launches.data.model.mapper.RocketDataMapper
 import com.mforn.launches.data.repository.LaunchesRepositoryImpl
 import com.mforn.launches.domain.repository.LaunchesRepository

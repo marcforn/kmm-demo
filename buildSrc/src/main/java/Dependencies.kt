@@ -17,6 +17,7 @@ object Versions {
     const val coroutines = "1.3.9-native-mt-2"
     const val ktor = "1.4.0"
     const val koin = "3.0.0-alpha-4"
+    const val blue_falcon = "0.7.2"
 }
 
 object Dependencies {
@@ -37,7 +38,6 @@ object Dependencies {
     object Coroutines {
         const val common = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
         const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
-        const val test = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.coroutines}"
     }
 
     object Ktor {
@@ -51,6 +51,10 @@ object Dependencies {
     object Koin {
         const val common = "org.koin:koin-core:${Versions.koin}"
         const val test = "org.koin:koin-test:${Versions.koin}"
+    }
+
+    object BlueFalcon {
+        const val common = "dev.bluefalcon:library:${Versions.blue_falcon}"
     }
     //endregion
 

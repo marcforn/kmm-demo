@@ -10,4 +10,8 @@ interface LaunchesRepository {
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getAllLaunches(): List<RocketLaunch>
 
+    @ExperimentalStdlibApi
+    @Throws(CustomException::class, CancellationException::class)
+    suspend fun getLaunchInformation(launchId : Int): RocketLaunch
+
 }
