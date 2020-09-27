@@ -1,3 +1,5 @@
+import Versions.kotlin
+
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -23,36 +25,31 @@ kotlin {
         }
     }
 
-    val ktorVersion = "1.4.0"
-    val serializationVersion = "1.0.0-RC"
-    val coroutinesVersion = "1.3.9-native-mt-2"
-    val koinVersion = "3.0.0-alpha-4"
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                api("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
-                api("org.koin:koin-core:$koinVersion")
-                api("io.ktor:ktor-client-core:$ktorVersion")
-                api("io.ktor:ktor-client-serialization:$ktorVersion")
-                api("io.ktor:ktor-client-logging:$ktorVersion")
+                api(Dependencies.Coroutines.common)
+                api(Dependencies.Koin.common)
+                api(Dependencies.Ktor.commonCore)
+                api(Dependencies.Ktor.commonSerialization)
+                api(Dependencies.Ktor.commonLogging)
             }
         }
-        val commonTest by getting{
+        val commonTest by getting {
             dependencies {
-                api("org.koin:koin-test:$koinVersion")
+                api(Dependencies.Coroutines.test)
+                api(Dependencies.Koin.test)
             }
         }
         val androidMain by getting {
             dependencies {
-                api("io.ktor:ktor-client-android:$ktorVersion")
+                api(Dependencies.Ktor.android)
             }
         }
         val androidTest by getting
         val iosMain by getting {
             dependencies {
-                api("io.ktor:ktor-client-ios:$ktorVersion")
+                api(Dependencies.Ktor.ios)
             }
         }
         val iosTest by getting
@@ -60,11 +57,12 @@ kotlin {
 }
 
 android {
-    compileSdkVersion(29)
+    compileSdkVersion(Versions.compile_sdk)
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
-        minSdkVersion(24)
-        targetSdkVersion(29)
+        minSdkVersion(Versions.min_sdk)
+        targetSdkVersion(Versions.target_sdk)
+
         versionCode = 1
         versionName = "1.0"
     }

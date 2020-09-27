@@ -6,18 +6,13 @@ buildscript {
         mavenCentral()
     }
 
-    val GRADLE_VERSION: String by project
-    val KOTLIN_VERSION: String by project
-
     dependencies {
-        classpath("com.android.tools.build:gradle:$GRADLE_VERSION")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$KOTLIN_VERSION")
-        classpath("org.jetbrains.kotlin:kotlin-serialization:$KOTLIN_VERSION")
+        classpath("com.android.tools.build:gradle:${Versions.gradle}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}")
+        classpath("org.jetbrains.kotlin:kotlin-serialization:${Versions.kotlin}")
     }
 }
 
-group = "com.mforn.kmmdemo"
-version = "1.0-SNAPSHOT"
 
 allprojects {
     repositories {
