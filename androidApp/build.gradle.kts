@@ -2,6 +2,9 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("kotlin-android-extensions")
+    id("com.google.gms.google-services")
+    id("com.google.firebase.firebase-perf")
+    id("com.google.firebase.crashlytics")
 }
 
 repositories {
@@ -22,12 +25,15 @@ dependencies {
     implementation(Dependencies.coroutines)
     implementation(Dependencies.core_ktx)
     implementation(Dependencies.recycler_view)
+    implementation(Dependencies.firebase_crashlytics)
+    implementation(Dependencies.firebase_analytics)
+    implementation(Dependencies.firebase_performance)
 }
 
 android {
     compileSdkVersion(Versions.compile_sdk)
     defaultConfig {
-        applicationId = "com.mforn.kmmdemo.androidApp"
+        applicationId = "com.mforn.kmmdemo"
         minSdkVersion(Versions.min_sdk)
         targetSdkVersion(Versions.target_sdk)
         versionCode = 1

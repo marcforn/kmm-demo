@@ -6,10 +6,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import com.mforn.launches.domain.model.RocketLaunch
+import com.mforn.launches.domain.model.Launch
 
 class MainAdapter(
-    var dataset: List<RocketLaunch>,
+    var dataset: List<Launch>,
     private val onClickItemListener: OnClickItemListener
 ) : RecyclerView.Adapter<MainAdapter.LaunchViewHolder>() {
 
@@ -31,7 +31,7 @@ class MainAdapter(
         private val launchSuccessTextView = itemView.findViewById<TextView>(R.id.launchSuccess)
         private val missionDetailsTextView = itemView.findViewById<TextView>(R.id.details)
 
-        fun bindData(launch: RocketLaunch) {
+        fun bindData(launch: Launch) {
             val ctx = itemView.context
             missionNameTextView.text = ctx.getString(R.string.mission_name_field, launch.missionName)
             launchYearTextView.text = ctx.getString(R.string.launch_year_field, launch.launchYear.toString())

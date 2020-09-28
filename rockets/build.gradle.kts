@@ -18,17 +18,14 @@ kotlin {
     ios {
         binaries {
             framework {
-                baseName = "shared"
+                baseName = "rockets"
             }
         }
     }
-
     sourceSets {
         val commonMain by getting {
             dependencies {
-                api(project(":common"))
-                api(project(":launches"))
-                api(project(":rockets"))
+                implementation(project(":common"))
             }
         }
         val commonTest by getting

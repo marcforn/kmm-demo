@@ -1,13 +1,18 @@
 package com.mforn.kmmdemo.androidApp
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.FrameLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.mforn.common.configuration.log.CustomLogger
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
@@ -70,13 +75,23 @@ class MainActivity : AppCompatActivity(), OnClickItemListener {
         progressBarView.isVisible = true
         mainScope.launch {
             kotlin.runCatching {
-                sdkManager.provideLaunches().getLaunchInformation(flightNumber)
+//                sdkManager.provideLaunches().getLaunchInformation(flightNumber)
+                scanDevices()
             }.onSuccess {
                 progressBarView.isVisible = false
             }.onFailure {
                 Toast.makeText(this@MainActivity, it.localizedMessage, Toast.LENGTH_LONG).show()
                 progressBarView.isVisible = false
             }
+        }
+    }
+
+    private fun scanDevices() {
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 1)
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            CustomLogger.e("MFR", "Permission not granted")
+        } else {
+            sdkManager.provideBluetooth().scan()
         }
     }
 }

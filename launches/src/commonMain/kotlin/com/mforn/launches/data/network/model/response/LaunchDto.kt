@@ -4,7 +4,7 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class RocketLaunchDto(
+data class LaunchDto(
     @SerialName("flight_number")
     val flightNumber: Int,
     @SerialName("mission_name")
@@ -19,24 +19,4 @@ data class RocketLaunchDto(
     val details: String?,
     @SerialName("launch_success")
     val launchSuccess: Boolean?,
-    @SerialName("links")
-    val links: LinksDto
-)
-
-@Serializable
-data class RocketDto(
-    @SerialName("rocket_id")
-    val id: String,
-    @SerialName("rocket_name")
-    val name: String,
-    @SerialName("rocket_type")
-    val type: String
-)
-
-@Serializable
-data class LinksDto(
-    @SerialName("mission_patch")
-    val missionPatchUrl: String?,
-    @SerialName("article_link")
-    val articleUrl: String?
 )

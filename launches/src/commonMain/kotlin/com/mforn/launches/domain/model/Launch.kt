@@ -1,6 +1,6 @@
 package com.mforn.launches.domain.model
 
-data class RocketLaunch(
+data class Launch(
     val flightNumber: Int,
     val missionName: String,
     val launchYear: Int,

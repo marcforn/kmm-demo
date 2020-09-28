@@ -2,14 +2,14 @@
 
 ## Pending Tasks:
 
-+ REST Interceptors & retries
-+ Firebase Integration (Analytics + Crashlytics)
++ Bluetooth Integration
 + Unit Testing
++ Inject ApplicationContext
++ REST Interceptors & retries
 + Logging DEBUG vs RELEASE: Obfuscate relevant information
 + Coverage Tools
 + Publish Artifact
 + Automation Testing
-+ Bluetooth Integration
 
 
 
@@ -22,26 +22,29 @@
 + **Logging messages**: Local implementation was required. Logs not disabled on iOS Release.
 + **Coroutines Retries**: Custom implementation has been done to retry failing REST connections.
 + **Exception Handler**: Custom implementation has been created to ensure only CustomException is sent to domain layer.
-+ **Dependency Injection**: Koin was used to solve DI issue. When SDK is initialized the graph is created and no method can be called without this step.
++ **Dependency Injection**: Koin was used to solve DI issue. When SDK is initialized the graph is created and all modules are injected.
 + **Library Versions**: All library versions have been centralized into Dependencies.kt file.
 + **Bluetooth Integration**: Third party library (BlueFalcon) was tested but it's not working on Kotlin 1.4. Opened a ticket on Github to wait for response. An alternative could be forking the library and implementing on our own.
++ **Firebase Crashlytics**: It has to be implemented on application level -> Does report crashes from KMM Module
++ **Firebase Performance**: It has to be implemented on application level -> Does report performance reports such as API response time and loading times.
+
 
 
 
 
 ## Issues found:
 
-### Logging messages:
+### Logging messages [iOS Support]:
 There no native logging mechanism. Actual/Expect implementation was required. Logs not disabled on iOS Release.
 
-### CustomException on Domain Layer:
+### CustomException on Domain Layer [Pending Framework Update]:
 The only way to populate to domain layer Custom Exception was adding @ExperimentalStdlibApi to all classes propagating the Exception. Review in the future the compatibility.
 
-### Dependency Injection:
-The Sdk implements it's own graph using Koin. In case native apps already use any DI mechanish the contract should be modified to pass the module to application parents.
-
-### Bluetooth Integration:
+### Bluetooth Integration [FAILED]:
 Third party library (BlueFalcon) was used. This provide a good client for connecting through bluetooth. The big issue is that library is updated every 3-4 month.
+
+### Context Injection [FAILED]:
+Could not inject Application context as Typealias does not work together with the current version of KOIN.
 
 
 
@@ -53,6 +56,7 @@ Third party library (BlueFalcon) was used. This provide a good client for connec
 + https://github.com/icerockdev/moko-template
 + https://github.com/AAkira/Kotlin-Multiplatform-Libraries
 + https://libs.kmp.icerock.dev/
++ https://kotlinlang.org/lp/mobile/case-studies/fastwork/
 
 
 

@@ -1,3 +1,4 @@
+include(":rockets")
 include(":launches")
 include(":common")
 include(":shared")

@@ -33,7 +33,7 @@ extension ContentView {
 
     enum LoadableLaunches {
         case loading
-        case result([LaunchesRocketLaunch])
+        case result([LaunchesLaunch])
         case error(String)
     }
 
@@ -60,4 +60,4 @@ extension ContentView {
     }
 }
 
-extension LaunchesRocketLaunch: Identifiable { }
+extension LaunchesLaunch: Identifiable { }

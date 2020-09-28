@@ -1,5 +1,3 @@
-import Versions.kotlin
-
 plugins {
     kotlin("multiplatform")
     kotlin("plugin.serialization")
@@ -33,7 +31,7 @@ kotlin {
                 api(Dependencies.Ktor.commonCore)
                 api(Dependencies.Ktor.commonSerialization)
                 api(Dependencies.Ktor.commonLogging)
-                //api(Dependencies.BlueFalcon.common) // TODO mforn: 28/09/20 pending fix from BlueFalcon team
+                api(Dependencies.BlueFalcon.common)
             }
         }
         val commonTest by getting {

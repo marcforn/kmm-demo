@@ -1,17 +1,17 @@
-package com.mforn.launches.domain.interactor
+package com.mforn.rockets.domain.interactor
 
 import com.mforn.common.domain.model.exception.CustomException
-import com.mforn.launches.domain.model.Launch
+import com.mforn.rockets.domain.model.Rocket
 import kotlin.coroutines.cancellation.CancellationException
 
-interface LaunchesInteractor {
+interface RocketsInteractor {
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
-    suspend fun getLaunches(): List<Launch>
+    suspend fun getRockets(): List<Rocket>
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
-    suspend fun getLaunchInformation(flightNumber : Int): Launch
+    suspend fun getRocketInformation(rocketId : String): Rocket
 
 }
