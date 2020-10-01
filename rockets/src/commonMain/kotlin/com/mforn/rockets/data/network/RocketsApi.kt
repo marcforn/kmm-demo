@@ -1,6 +1,6 @@
 package com.mforn.rockets.data.network
 
-import com.mforn.common.data.network.coroutine.retryApi
+import com.mforn.common.data.network.coroutine.retryNetworkApi
 import com.mforn.common.domain.model.exception.CustomException
 import com.mforn.rockets.data.network.model.response.RocketDto
 import io.ktor.client.*
@@ -17,13 +17,13 @@ class RocketsApi(private val httpClient: HttpClient) {
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getAllRockets(): List<RocketDto> {
-        return retryApi { httpClient.get(ROCKETS_ENDPOINT) }
+        return retryNetworkApi { httpClient.get(ROCKETS_ENDPOINT) }
     }
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getRocketInformation(rocketId: String): RocketDto {
-        return retryApi { httpClient.get("$ROCKETS_ENDPOINT/$rocketId") }
+        return retryNetworkApi { httpClient.get("$ROCKETS_ENDPOINT/$rocketId") }
     }
 
 }

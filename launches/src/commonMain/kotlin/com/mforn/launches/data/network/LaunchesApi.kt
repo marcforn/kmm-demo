@@ -1,6 +1,6 @@
 package com.mforn.launches.data.network
 
-import com.mforn.common.data.network.coroutine.retryApi
+import com.mforn.common.data.network.coroutine.retryNetworkApi
 import com.mforn.common.domain.model.exception.CustomException
 import com.mforn.launches.data.network.model.response.LaunchDto
 import io.ktor.client.*
@@ -17,13 +17,13 @@ class LaunchesApi(private val httpClient: HttpClient) {
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getAllLaunches(): List<LaunchDto> {
-        return retryApi { httpClient.get(LAUNCHES_ENDPOINT) }
+        return retryNetworkApi { httpClient.get(LAUNCHES_ENDPOINT) }
     }
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
     suspend fun getLaunchInformation(flightNumber : Int): LaunchDto {
-        return retryApi { httpClient.get("$LAUNCHES_ENDPOINT/$flightNumber") }
+        return retryNetworkApi { httpClient.get("$LAUNCHES_ENDPOINT/$flightNumber") }
     }
 
 }

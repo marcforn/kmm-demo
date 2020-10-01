@@ -23,7 +23,7 @@ private const val API_RETRIES = 3
  */
 @ExperimentalStdlibApi
 @Throws(CustomException::class, CancellationException::class)
-suspend fun <T> retryApi(block: suspend () -> T): T {
+suspend fun <T> retryNetworkApi(block: suspend () -> T): T {
     repeat(API_RETRIES) {
         try {
             return block()

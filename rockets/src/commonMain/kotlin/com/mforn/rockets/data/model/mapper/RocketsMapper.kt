@@ -6,13 +6,13 @@ import com.mforn.rockets.domain.model.Rocket
 
 class RocketsMapper {
 
-    fun mapRocketList(data: List<RocketDto>): List<Rocket> {
+    fun mapToRocketList(data: List<RocketDto>): List<Rocket> {
         val modelList = mutableListOf<Rocket>()
-        data.forEach { it -> modelList.add(mapRocket(it)) }
+        data.forEach { it -> modelList.add(mapToRocket(it)) }
         return modelList
     }
 
-    fun mapRocket(launchDto: RocketDto) : Rocket{
+    fun mapToRocket(launchDto: RocketDto) : Rocket{
         return Rocket(
             launchDto.id,
             launchDto.name,

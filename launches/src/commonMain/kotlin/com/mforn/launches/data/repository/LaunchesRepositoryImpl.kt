@@ -18,7 +18,7 @@ class LaunchesRepositoryImpl(
     @Throws(CustomException::class, CancellationException::class)
     override suspend fun getAllLaunches(): List<Launch>{
         val response = launchesApi.getAllLaunches()
-        return dataMapper.mapLaunchList(response)
+        return dataMapper.mapToLaunchList(response)
     }
 
     @ExperimentalStdlibApi
@@ -26,7 +26,7 @@ class LaunchesRepositoryImpl(
     override suspend fun getLaunchInformation(flightNumber : Int): Launch {
         val response = launchesApi.getLaunchInformation(flightNumber)
 
-        return dataMapper.mapLaunch(response)
+        return dataMapper.mapToLaunch(response)
     }
 
 }

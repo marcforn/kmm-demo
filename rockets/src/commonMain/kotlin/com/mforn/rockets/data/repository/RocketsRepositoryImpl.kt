@@ -18,14 +18,14 @@ class RocketsRepositoryImpl(
     @Throws(CustomException::class, CancellationException::class)
     override suspend fun getAllRockets(): List<Rocket> {
         val response = rocketsApi.getAllRockets()
-        return rocketsMapper.mapRocketList(response)
+        return rocketsMapper.mapToRocketList(response)
     }
 
     @ExperimentalStdlibApi
     @Throws(CustomException::class, CancellationException::class)
     override suspend fun getRocketInformation(rocketId: String): Rocket {
         val response = rocketsApi.getRocketInformation(rocketId)
-        return rocketsMapper.mapRocket(response)
+        return rocketsMapper.mapToRocket(response)
     }
 
 

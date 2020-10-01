@@ -17,11 +17,11 @@ actual class PlatformLogger {
     }
 
     actual fun logWarning(tag: String, message: String) {
-        Log.e(tag, message)
+        Log.w(tag, message)
     }
 
     actual fun logWarning(tag: String, message: String, exception: Throwable) {
-        Log.e(tag, message, exception)
+        Log.w(tag, message, exception)
     }
 
     actual fun logError(tag: String, message: String) {

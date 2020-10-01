@@ -36,10 +36,17 @@ extension ContentView {
         case result([LaunchesLaunch])
         case error(String)
     }
+    
+    enum LoadablePeripherals {
+        case loading
+        case result([BluetoothPeripheral])
+        case error(String)
+    }
 
     class ViewModel: ObservableObject {
         let sdk: SdkManager
         @Published var launches = LoadableLaunches.loading
+        @Published var peripherals = LoadablePeripherals.loading
 
         init(sdk: SdkManager) {
             self.sdk = sdk
@@ -49,6 +56,17 @@ extension ContentView {
         func loadLaunches() {
             self.launches = .loading
             sdk.initialize(applicationContext: UIView())
+            
+            sdk.provideBluetooth().getPeripherals(completionHandler: {peripherals, error in
+                if let peripherals = peripherals {
+                    self.peripherals = .result(peripherals)
+                    print(self.peripherals)
+                } else {
+                    self.peripherals = .error(error?.localizedDescription ?? "error")
+                    print(error?.localizedDescription ?? "error")
+                }
+            })
+            
             sdk.provideLaunches().getLaunches(completionHandler: { launches, error in
                 if let launches = launches {
                     self.launches = .result(launches)

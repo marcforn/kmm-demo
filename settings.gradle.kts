@@ -1,3 +1,4 @@
+include(":bluetooth")
 include(":rockets")
 include(":launches")
 include(":common")

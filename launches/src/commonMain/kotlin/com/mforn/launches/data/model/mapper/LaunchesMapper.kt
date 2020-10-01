@@ -6,13 +6,13 @@ import com.mforn.launches.domain.model.Launch
 
 class LaunchesMapper {
 
-    fun mapLaunchList(data: List<LaunchDto>): List<Launch> {
+    fun mapToLaunchList(data: List<LaunchDto>): List<Launch> {
         val modelList = mutableListOf<Launch>()
-        data.forEach { it -> modelList.add(mapLaunch(it)) }
+        data.forEach { it -> modelList.add(mapToLaunch(it)) }
         return modelList
     }
 
-    fun mapLaunch(launchDto: LaunchDto) : Launch{
+    fun mapToLaunch(launchDto: LaunchDto) : Launch{
         return Launch(
             launchDto.flightNumber,
             launchDto.missionName,
