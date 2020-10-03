@@ -1,9 +1,9 @@
 object Versions {
     const val min_sdk = 21
-    const val target_sdk = 29
-    const val compile_sdk = 29
+    const val target_sdk = 30
+    const val compile_sdk = 30
 
-    const val kotlin_plugin = "1.4.10"
+    const val kotlin = "1.4.10"
     const val gradle_plugin = "4.1.0-rc03"
     const val google_services_plugin = "4.3.4"
     const val firebase_crashlytics_plugin = "2.3.0"
@@ -21,7 +21,7 @@ object Versions {
     const val firebase_performance = "19.0.9"
 
     const val coroutines = "1.3.9-native-mt-2"
-    const val ktor = "1.4.0"
+    const val ktor = "1.4.1"
     const val koin = "3.0.0-alpha-4"
     const val blue_falcon = "0.8.0"
 }
@@ -64,6 +64,11 @@ object Dependencies {
 
     object BlueFalcon {
         const val common = "dev.bluefalcon:library:${Versions.blue_falcon}"
+    }
+
+    object KotlinTest {
+        const val common = "org.jetbrains.kotlin:kotlin-test-common:${Versions.kotlin}"
+        const val commonAnnotations = "org.jetbrains.kotlin:kotlin-test-annotations-common:${Versions.kotlin}"
     }
     //endregion
 

@@ -8,6 +8,7 @@
 * Logging DEBUG vs RELEASE: Obfuscate relevant information
 * Coverage Tools
 * Publish Artifact
+* Git Submodule approach
 * Automation Testing
 
 
@@ -27,6 +28,7 @@
 * **Firebase Performance**: It has to be implemented on application level -> Does report performance reports such as API response time and app loading times.
 * **Bluetooth Integration [Android]**: Scan Devices, Connect & Disconnect works. Third party was used (BlueFalcon). Open source project that get updates every months.
 * **Inject ApplicationContext**: Using typealias for InitializationContext we can initialize SDK with Application for Android and UIView for iOS with a single invocation.
+* **Unit Testing**: [IN PROGRESS]
 
 
 
@@ -39,9 +41,6 @@ There no native logging mechanism. Actual/Expect implementation was required. Lo
 
 ### CustomException on Domain Layer [Pending Framework Update]:
 The only way to populate to domain layer Custom Exception was adding @ExperimentalStdlibApi to all classes propagating the Exception. Review in the future the compatibility.
-
-### Context Injection [FAILED]:
-Could not inject Application context as Typealias, does not work together with the current version of KOIN.
 
 ### Bluetooth Integration [iOS]:
 Pending to test in Real iOS device

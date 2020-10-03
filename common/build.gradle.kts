@@ -36,7 +36,10 @@ kotlin {
         }
         val commonTest by getting {
             dependencies {
+                // TODO mforn: 5/10/20 check why is not propagated to child modules
                 api(Dependencies.Koin.test)
+                api(Dependencies.KotlinTest.common)
+                api(Dependencies.KotlinTest.commonAnnotations)
             }
         }
         val androidMain by getting {

@@ -39,7 +39,7 @@ suspend fun <T> retryNetworkApi(block: suspend () -> T): T {
     } catch (exception: Exception) {
         when (exception) {
             is IOException -> throw CustomErrorType.NetworkError(exception.message ?: "Unknown NetworkError")
-            is ResponseException -> throw CustomErrorType.ApiError(exception.response?.status?.value ?: 999, exception.message)
+            is ResponseException -> throw CustomErrorType.ApiError(exception.response.status.value, exception.message)
             else -> throw CustomErrorType.InternalError(exception.message ?: "Unknown InternalError")
         }
     }

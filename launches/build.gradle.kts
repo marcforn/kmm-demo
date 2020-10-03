@@ -28,7 +28,14 @@ kotlin {
                 implementation(project(":common"))
             }
         }
-        val commonTest by getting
+
+        val commonTest by getting{
+            dependencies {
+                api(Dependencies.Koin.test)
+                api(Dependencies.KotlinTest.common)
+                api(Dependencies.KotlinTest.commonAnnotations)
+            }
+        }
         val androidMain by getting
         val androidTest by getting
         val iosMain by getting
