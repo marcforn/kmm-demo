@@ -2,9 +2,8 @@
 
 ## Pending Tasks:
 
-* Bluetooth Integration iOS
 * Unit Testing
-* Inject ApplicationContext
+* Bluetooth Integration iOS
 * REST Interceptors & retries
 * Logging DEBUG vs RELEASE: Obfuscate relevant information
 * Coverage Tools
@@ -27,6 +26,7 @@
 * **Firebase Crashlytics**: It has to be implemented on application level -> Does report crashes from KMM Module
 * **Firebase Performance**: It has to be implemented on application level -> Does report performance reports such as API response time and app loading times.
 * **Bluetooth Integration [Android]**: Scan Devices, Connect & Disconnect works. Third party was used (BlueFalcon). Open source project that get updates every months.
+* **Inject ApplicationContext**: Using typealias for InitializationContext we can initialize SDK with Application for Android and UIView for iOS with a single invocation.
 
 
 

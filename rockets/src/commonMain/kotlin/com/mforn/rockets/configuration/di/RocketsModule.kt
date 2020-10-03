@@ -7,7 +7,7 @@ import com.mforn.rockets.domain.repository.RocketsRepository
 import org.koin.dsl.module
 
 
-val rocketsModule = module {
+fun provideRocketsModule() = module {
     single<RocketsApi> { RocketsApi(get()) }
     single<RocketsMapper> { RocketsMapper() }
     single<RocketsRepository> { RocketsRepositoryImpl(get(), get()) }

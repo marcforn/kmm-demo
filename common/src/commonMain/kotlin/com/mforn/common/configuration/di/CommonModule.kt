@@ -1,13 +1,14 @@
 package com.mforn.common.configuration.di
 
+import com.mforn.common.configuration.expect.PlatformContext
 import com.mforn.common.data.network.customHttpClient
 import dev.bluefalcon.BlueFalcon
 import io.ktor.client.*
 import org.koin.dsl.module
 
 
-val commonModule = module {
+fun provideCommonModule(platformContext: PlatformContext) = module {
     single<HttpClient> { customHttpClient }
-//    single<BlueFalcon> { BlueFalcon(get(), null) }
+    single<BlueFalcon> { BlueFalcon(platformContext, null) }
 }
 

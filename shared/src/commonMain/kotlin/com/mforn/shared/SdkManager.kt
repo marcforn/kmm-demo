@@ -1,21 +1,19 @@
 package com.mforn.shared
 
-import com.mforn.bluetooth.configuration.di.bluetoothModule
+import com.mforn.bluetooth.configuration.di.provideBluetoothModule
 import com.mforn.bluetooth.domain.interactor.BluetoothInteractor
 import com.mforn.bluetooth.domain.interactor.BluetoothInteractorImpl
-import com.mforn.common.configuration.di.commonModule
-import com.mforn.common.configuration.expect.ApplicationContext
+import com.mforn.common.configuration.di.provideCommonModule
+import com.mforn.common.configuration.expect.PlatformContext
 import com.mforn.common.configuration.log.CustomLogger
 import com.mforn.common.domain.model.exception.CustomErrorType
-import com.mforn.launches.configuration.di.launchesModule
+import com.mforn.launches.configuration.di.provideLaunchesModule
 import com.mforn.launches.domain.interactor.LaunchesInteractor
 import com.mforn.launches.domain.interactor.LaunchesInteractorImpl
-import com.mforn.rockets.configuration.di.rocketsModule
+import com.mforn.rockets.configuration.di.provideRocketsModule
 import com.mforn.rockets.domain.interactor.RocketsInteractor
 import com.mforn.rockets.domain.interactor.RocketsInteractorImpl
-import dev.bluefalcon.BlueFalcon
 import org.koin.core.context.startKoin
-import org.koin.dsl.module
 
 
 private val TAG = SdkManager::class.simpleName!!
@@ -44,26 +42,19 @@ class SdkManager {
      *  1 - Creating Dependency Injection graph
      *  2 - Set initialized flag as true
      */
-    fun initialize(applicationContext: ApplicationContext) {
-        injectModules(applicationContext)
+    fun initialize(platformContext: PlatformContext) {
+        injectModules(platformContext)
         isInitialized = true
         CustomLogger.i(TAG, "Initialized")
     }
 
-    private fun injectModules(applicationContext: ApplicationContext) {
-        // TODO mforn: 28/09/20 kclass conflict on iOS
-        val removeModule = module {
-            single<BlueFalcon> { BlueFalcon(applicationContext, null) }
-//            single<ApplicationContext> { applicationContext}
-        }
-
+    private fun injectModules(platformContext: PlatformContext) {
         startKoin {
             modules(
-                removeModule,
-                commonModule,
-                launchesModule,
-                rocketsModule,
-                bluetoothModule
+                provideCommonModule(platformContext),
+                provideLaunchesModule(),
+                provideRocketsModule(),
+                provideBluetoothModule()
             )
         }
     }

@@ -8,7 +8,7 @@ import dev.bluefalcon.BlueFalcon
 import org.koin.dsl.module
 
 
-val bluetoothModule = module {
+fun provideBluetoothModule() = module {
     single<BluetoothApi> { BluetoothApi(get()) }
     single<BluetoothMapper> { BluetoothMapper() }
     single<BluetoothRepository> { BluetoothRepositoryImpl(get(), get()) }
