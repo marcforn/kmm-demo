@@ -51,7 +51,7 @@ android {
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
         }
     }
 }
@@ -61,6 +61,9 @@ val packForXcode by tasks.creating(Sync::class) {
     val mode = System.getenv("CONFIGURATION") ?: "DEBUG"
     val sdkName = System.getenv("SDK_NAME") ?: "iphonesimulator"
     val targetName = "ios" + if (sdkName.startsWith("iphoneos")) "Arm64" else "X64"
+    print("mode: $mode\n")
+    print("sdkName: $sdkName\n")
+    print("targetName: $targetName\n")
     val framework = kotlin.targets.getByName<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget>(targetName).binaries.getFramework(mode)
     inputs.property("mode", mode)
     dependsOn(framework.linkTask)

@@ -39,11 +39,28 @@ android {
         versionCode = 1
         versionName = "1.0"
     }
+
+    signingConfigs {
+        getByName("debug") {
+            storeFile = file("debug.keystore")
+        }
+//        getByName("release") {
+//        }
+    }
+
     buildTypes {
-        getByName("release") {
+        getByName("debug") {
+            isDebuggable = true
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
+        }
+        getByName("release") {
+            isDebuggable = false
+            isMinifyEnabled = true
+//            signingConfig = signingConfigs.getByName("release")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

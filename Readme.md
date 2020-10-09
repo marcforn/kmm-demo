@@ -1,10 +1,9 @@
 # Kotlin MultiPlatform Demo
 
 ## Pending Tasks:
-
+* REST Interceptors & retries
 * Unit Testing
 * Bluetooth Integration iOS
-* REST Interceptors & retries
 * Logging DEBUG vs RELEASE: Obfuscate relevant information
 * Coverage Tools
 * Publish Artifact
@@ -15,7 +14,6 @@
 
 
 ## Successful milestones:
-
 * **Module Abstraction**. A common module has been created which the rest of modules inject. All the business logic has been splitted in several modules such as launches (All information regarding SpaceX launches). A shared module has been created as a bridge with all feature modules.
 * **REST Request**: Using Ktor a GET request to a public API and retrieve data on both platforms was executed successfully.
 * **Logging REST**: Using Ktor-logging to show logs on the console was executed successfully.
@@ -28,7 +26,7 @@
 * **Firebase Performance**: It has to be implemented on application level -> Does report performance reports such as API response time and app loading times.
 * **Bluetooth Integration [Android]**: Scan Devices, Connect & Disconnect works. Third party was used (BlueFalcon). Open source project that get updates every months.
 * **Inject ApplicationContext**: Using typealias for InitializationContext we can initialize SDK with Application for Android and UIView for iOS with a single invocation.
-* **Unit Testing**: [IN PROGRESS]
+* **Run app on Real Devices**: Both apps works as expected. The only caveat we should take is to delete xcode-frameworks folder from xcode when switching from emulator and real device in order to build .framework with proper architecture.
 
 
 
@@ -43,13 +41,15 @@ There no native logging mechanism. Actual/Expect implementation was required. Lo
 The only way to populate to domain layer Custom Exception was adding @ExperimentalStdlibApi to all classes propagating the Exception. Review in the future the compatibility.
 
 ### Bluetooth Integration [iOS]:
-Pending to test in Real iOS device
+Unexpected error from Bluefalcon when initializing SDK.
+
+### Unit Testing:
+Test can only be executed by gradle script, cannot be found in IDE (Gradle->Verification->Test)
 
 
 
 
 ## Reference links:
-
 * https://github.com/touchlab/KaMPKit
 * https://github.com/touchlab/KaMPKit/blob/master/docs/GENERAL_ARCHITECTURE.md
 * https://github.com/icerockdev/moko-template
@@ -61,7 +61,6 @@ Pending to test in Real iOS device
 
 
 ## Third Parties:
-
 * [Ktor](https://ktor.io/docs/http-client-multiplatform.html): Network Frameword
 * [Koin](https://johnoreilly.dev/posts/kotlinmultiplatform-koin/): DI Frameword
 * [BlueFalcon](https://github.com/Reedyuk/blue-falcon): Bluetooth client
