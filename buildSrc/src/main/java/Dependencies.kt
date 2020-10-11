@@ -4,7 +4,7 @@ object Versions {
     const val compile_sdk = 30
 
     const val kotlin = "1.4.10"
-    const val gradle_plugin = "4.1.0-rc03"
+    const val gradle_plugin = "4.1.0"
     const val google_services_plugin = "4.3.4"
     const val firebase_crashlytics_plugin = "2.3.0"
     const val firebase_performance_plugin = "1.3.1"

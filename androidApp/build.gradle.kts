@@ -1,3 +1,6 @@
+import java.util.*
+import java.io.*
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -44,20 +47,29 @@ android {
         getByName("debug") {
             storeFile = file("debug.keystore")
         }
-//        getByName("release") {
-//        }
+        create("release") {
+            val keystoreProperties = Properties()
+            val keystoreFile = file("keystore.properties")
+            keystoreProperties.load(FileInputStream(keystoreFile))
+
+            storeFile = file("release.keystore")
+            keyAlias = keystoreProperties["keystore.keyAlias"] as String
+            keyPassword = keystoreProperties["keystore.keyPassword"] as String
+            storePassword = keystoreProperties["keystore.storePassword"] as String
+        }
     }
 
     buildTypes {
         getByName("debug") {
             isDebuggable = true
             isMinifyEnabled = false
+            applicationIdSuffix = ".debug"
             signingConfig = signingConfigs.getByName("debug")
         }
         getByName("release") {
             isDebuggable = false
             isMinifyEnabled = true
-//            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
 

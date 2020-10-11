@@ -55,7 +55,15 @@ extension ContentView {
 
         func loadLaunches() {
             self.launches = .loading
-            sdk.initialize(platformContext: UIView())
+            
+            var isDebug = true
+            #if DEBUG
+               isDebug = true
+            #else
+                isDebug = false
+            #endif
+            
+            sdk.initialize(platformContext: UIView(), isDebug: isDebug)
             
             sdk.provideBluetooth().getPeripherals(completionHandler: {peripherals, error in
                 if let peripherals = peripherals {

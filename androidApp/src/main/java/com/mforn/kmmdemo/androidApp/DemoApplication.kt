@@ -13,7 +13,7 @@ class DemoApplication : Application() {
         super.onCreate()
 
         sdkManager = SdkManager()
-        sdkManager.initialize(this)
+        sdkManager.initialize(this, BuildConfig.DEBUG)
     }
 
 }

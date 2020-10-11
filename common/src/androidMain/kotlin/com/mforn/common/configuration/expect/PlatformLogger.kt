@@ -5,9 +5,6 @@ import com.mforn.common.android.BuildConfig
 
 actual class PlatformLogger {
 
-    actual var enabled: Boolean = BuildConfig.DEBUG
-
-
     actual fun logInfo(tag: String, message: String) {
         Log.i(tag, message)
     }

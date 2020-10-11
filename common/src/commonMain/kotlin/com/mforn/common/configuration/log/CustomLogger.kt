@@ -1,31 +1,28 @@
 package com.mforn.common.configuration.log
 
 import com.mforn.common.configuration.expect.PlatformLogger
+import kotlin.jvm.Volatile
+import kotlin.native.concurrent.ThreadLocal
 
 
+@ThreadLocal // TODO: 16/10/2020 review several instances
 object CustomLogger {
     private val platformLogger = PlatformLogger()
 
-    var enabled
-        get() = platformLogger.enabled
-        set(value) {
-            platformLogger.enabled = value
-        }
+    var isDebug: Boolean = false
 
     fun i(tag: String, message: String) {
-        if (enabled) {
-            platformLogger.logInfo(tag, message)
-        }
+        platformLogger.logInfo(tag, message)
     }
 
     fun d(tag: String, message: String) {
-        if (enabled) {
+        if (isDebug) {
             platformLogger.logDebug(tag, message)
         }
     }
 
     fun w(tag: String, message: String, exception: Throwable? = null) {
-        if (enabled) {
+        if (isDebug) {
             exception?.let {
                 platformLogger.logWarning(tag, message, exception)
             } ?: run {

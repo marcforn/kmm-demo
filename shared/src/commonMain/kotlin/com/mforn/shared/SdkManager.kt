@@ -42,8 +42,9 @@ class SdkManager {
      *  1 - Creating Dependency Injection graph
      *  2 - Set initialized flag as true
      */
-    fun initialize(platformContext: PlatformContext) {
+    fun initialize(platformContext: PlatformContext, isDebug: Boolean = false) {
         injectModules(platformContext)
+        setupLogs(isDebug)
         isInitialized = true
         CustomLogger.i(TAG, "Initialized")
     }
@@ -57,6 +58,10 @@ class SdkManager {
                 provideBluetoothModule()
             )
         }
+    }
+
+    private fun setupLogs(isDebug: Boolean) {
+        CustomLogger.isDebug = isDebug
     }
 
     /**
