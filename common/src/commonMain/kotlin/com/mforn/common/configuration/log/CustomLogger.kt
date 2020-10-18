@@ -1,7 +1,6 @@
 package com.mforn.common.configuration.log
 
 import com.mforn.common.configuration.expect.PlatformLogger
-import kotlin.jvm.Volatile
 import kotlin.native.concurrent.ThreadLocal
 
 
